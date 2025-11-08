@@ -1,6 +1,8 @@
-# -2025
-heba2002
-<!doctype html>
+from zipfile import ZipFile
+from pathlib import Path
+
+# Create the HTML file content
+html_content = """<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
@@ -20,7 +22,6 @@ heba2002
     .center{text-align:center}
     .meta{font-size:13px;color:var(--muted);margin-top:12px}
     .link{display:inline-block;padding:10px 14px;border-radius:8px;background:#f2f6ff;border:1px solid #e3e9ff;text-decoration:none;color:#123;font-weight:600;margin-top:14px}
-    /* responsive */
     @media (max-width:560px){.card{padding:20px}.arabic{font-size:18px}}
   </style>
 </head>
@@ -37,31 +38,34 @@ heba2002
           <div class="meta">2025</div>
         </div>
       </header>
-
       <hr>
-
       <section>
         <p>لـ <strong>منة الله المريمي</strong> — <em>Menna Al-Marymi</em></p>
         <p>يُحظر إعادة النشر أو النسخ أو التوزيع أو الاقتباس دون إذن خطي مسبق من المؤلفة.</p>
         <p>نعم، من أجل الابتكار.</p>
-
         <hr>
-
         <p class="english">For <strong>Menna Al-Marymi</strong></p>
         <p class="english">Reproduction, copying, distribution, or quotation without prior written permission from the author is prohibited.</p>
         <p class="english">Yes, for innovation.</p>
-
         <div class="center">
-          <!-- Put your real URL below or keep as example -->
           <a class="link" href="https://mennaalmarymi.com/copyright-2025" target="_blank" rel="noopener">https://mennaalmarymi.com/copyright-2025</a>
         </div>
-
       </section>
-
       <footer class="meta center" style="margin-top:22px;color:var(--muted);font-size:13px">
         هذه الصفحة معدّة لعرض وتثبيت حقوق النشر — يُمنع استخدام المحتوى دون إذن خطي من المؤلفة.
       </footer>
     </article>
   </main>
 </body>
-</html>
+</html>"""
+
+# Create the HTML file
+html_path = Path("/mnt/data/copyright-2025.html")
+html_path.write_text(html_content, encoding="utf-8")
+
+# Create a zip file for easy upload
+zip_path = Path("/mnt/data/copyright-2025.zip")
+with ZipFile(zip_path, "w") as zipf:
+    zipf.write(html_path, arcname="copyright-2025.html")
+
+zip_path
